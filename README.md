@@ -1,8 +1,11 @@
-# Quick Map GIF
+# QuickMapGif
 
 A QGIS plugin for manually capturing a sequence of map canvas frames and
 exporting them as an animated GIF — no Pillow, no ffmpeg, no external
 dependencies.
+
+New to the plugin? [**TUTORIAL.md**](TUTORIAL.md) walks through a full
+worked example, fixed-view and moving-camera animations included.
 
 ## Install (development)
 
@@ -19,8 +22,8 @@ placed inside your profile's plugins directory, named `quick_map_gif`.
 2. Copy (or symlink) this entire project folder into that directory as
    `quick_map_gif`.
 3. Restart QGIS, then open **Plugins > Manage and Install Plugins**, switch
-   to the "Installed" tab, and enable **Quick Map GIF**.
-4. A toolbar icon and a **Plugins > Quick Map GIF** menu entry appear —
+   to the "Installed" tab, and enable **QuickMapGif**.
+4. A toolbar icon and a **Plugins > QuickMapGif** menu entry appear —
    click either to open the capture dock.
 
 Symlinking during development means edits to these files take effect the
@@ -33,7 +36,7 @@ ln -s "/Users/siddharthgupta/Projects/quick_map_gif" ~/Library/Application\ Supp
 
 ## Workflow
 
-1. Open the **Quick Map GIF** dock and navigate the map to your first frame.
+1. Open the **QuickMapGif** dock and navigate the map to your first frame.
 2. Leave **Lock extent** checked (default) if every frame should share the
    same view — the dock stores that view as the reference. Uncheck it if
    you want to intentionally move/zoom the camera between frames.
@@ -70,6 +73,18 @@ the QGIS window is resized or what display DPI you're on.
 - `export_dialog.py` — GIF export controls + background export task
 - `gif_encoder.py` — standalone GIF89a encoder (palette quantization +
   LZW), has no QGIS/Qt dependency and can be tested independently
+
+## Publishing to plugins.qgis.org
+
+This repo is prepared to meet the [official repository's requirements](https://docs.qgis.org/3.44/en/docs/pyqgis_developer_cookbook/plugins/releasing.html): `metadata.txt`, `__init__.py`, and `LICENSE` (GPLv2-or-later, matching QGIS's own license) are all in place, the icon is a real design rather than the default, `repository`/`tracker`/`homepage` point at this live repo, and the code passes a `pyflakes`/`pycodestyle` check with no findings.
+
+To actually submit:
+
+1. Get an OSGeo ID at the [OSGeo web portal](https://www.osgeo.org/community/getting-started-osgeo/osgeo_userid/) if you don't already have one — required to upload to the official repository.
+2. Push the current state of this repo (including `LICENSE` and `icon.png`) to `main` on GitHub so the linked repository/tracker/homepage URLs resolve to the real thing.
+3. Zip the plugin folder itself (a folder named `quick_map_gif/` at the top level of the archive — not its contents at the zip root), excluding `.git`, `.gitignore`, `.DS_Store`, and `__pycache__`.
+4. Upload the zip at [plugins.qgis.org/plugins/add](https://plugins.qgis.org/plugins/add/). A staff member reviews and approves new uploads — approvals run daily on weekdays.
+5. Bump `version` in `metadata.txt` for every subsequent upload; the repository requires each uploaded version to be unique.
 
 ## Known limitations (v0.1)
 

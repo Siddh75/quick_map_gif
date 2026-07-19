@@ -17,11 +17,11 @@ class QuickMapGifPlugin:
     def initGui(self):
         icon_path = os.path.join(self.plugin_dir, "icon.png")
         icon = QIcon(icon_path) if os.path.exists(icon_path) else QIcon()
-        self.action = QAction(icon, "Quick Map GIF", self.iface.mainWindow())
+        self.action = QAction(icon, "QuickMapGif", self.iface.mainWindow())
         self.action.setCheckable(True)
         self.action.triggered.connect(self.toggle_dock)
         self.iface.addToolBarIcon(self.action)
-        self.iface.addPluginToMenu("&Quick Map GIF", self.action)
+        self.iface.addPluginToMenu("&QuickMapGif", self.action)
 
     def toggle_dock(self, checked):
         if self.dock_widget is None:
@@ -48,5 +48,5 @@ class QuickMapGifPlugin:
             self.dock_widget = None
         if self.action is not None:
             self.iface.removeToolBarIcon(self.action)
-            self.iface.removePluginMenu("&Quick Map GIF", self.action)
+            self.iface.removePluginMenu("&QuickMapGif", self.action)
             self.action = None

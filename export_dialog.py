@@ -112,7 +112,7 @@ class ExportDialog(QDialog):
     def _start_export(self):
         output_path = self.path_edit.text().strip()
         if not output_path:
-            QMessageBox.warning(self, "Quick Map GIF", "Please choose an output file.")
+            QMessageBox.warning(self, "QuickMapGif", "Please choose an output file.")
             return
 
         fps = self.fps_spin.value()
@@ -145,7 +145,7 @@ class ExportDialog(QDialog):
         except Exception as exc:  # noqa: BLE001
             self.export_btn.setEnabled(True)
             self.status_label.setText("")
-            QMessageBox.critical(self, "Quick Map GIF", f"Failed to prepare frames: {exc}")
+            QMessageBox.critical(self, "QuickMapGif", f"Failed to prepare frames: {exc}")
             return
 
         self.task = _GifExportTask(rgb_frames, output_path, loop)
@@ -164,7 +164,7 @@ class ExportDialog(QDialog):
         else:
             error = self.task.error if self.task else "unknown error"
             self.status_label.setText("Export failed. See QGIS log for details.")
-            QMessageBox.critical(self, "Quick Map GIF", f"GIF export failed: {error}")
+            QMessageBox.critical(self, "QuickMapGif", f"GIF export failed: {error}")
 
 
 class _GifExportTask(QgsTask):
@@ -185,4 +185,4 @@ class _GifExportTask(QgsTask):
 
     def finished(self, result):
         if not result and self.error:
-            QgsMessageLog.logMessage(f"Quick Map GIF export failed: {self.error}", "Quick Map GIF")
+            QgsMessageLog.logMessage(f"QuickMapGif export failed: {self.error}", "QuickMapGif")

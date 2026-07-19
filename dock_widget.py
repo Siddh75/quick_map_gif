@@ -31,7 +31,7 @@ class QuickMapGifDockWidget(QDockWidget):
     DEFAULT_HEIGHT = 600
 
     def __init__(self, iface, parent=None):
-        super().__init__("Quick Map GIF", parent)
+        super().__init__("QuickMapGif", parent)
         self.iface = iface
         self.canvas = iface.mapCanvas()
         self.frame_manager = FrameManager()
@@ -204,7 +204,7 @@ class QuickMapGifDockWidget(QDockWidget):
     # ------------------------------------------------------------------
     def _open_preview_window(self):
         if not self.frame_manager.frames:
-            QMessageBox.information(self, "Quick Map GIF", "Capture at least one frame first.")
+            QMessageBox.information(self, "QuickMapGif", "Capture at least one frame first.")
             return
         from .preview_dialog import PreviewWindow
 
@@ -221,7 +221,7 @@ class QuickMapGifDockWidget(QDockWidget):
     # ------------------------------------------------------------------
     def _open_export_dialog(self):
         if not self.frame_manager.frames:
-            QMessageBox.information(self, "Quick Map GIF", "Capture at least one frame first.")
+            QMessageBox.information(self, "QuickMapGif", "Capture at least one frame first.")
             return
         from .export_dialog import ExportDialog
 

@@ -21,7 +21,7 @@ DEFAULT_FPS = 10
 class PreviewWindow(QDialog):
     def __init__(self, frames, fps=DEFAULT_FPS, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Quick Map GIF -- Preview")
+        self.setWindowTitle("QuickMapGif -- Preview")
         self.setWindowFlags(self.windowFlags() | Qt.Window)
         self.frames = frames
         self._index = 0
