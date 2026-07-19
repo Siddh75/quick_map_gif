@@ -1,0 +1,19 @@
+[general]
+name=Quick Map GIF
+qgisMinimumVersion=3.16
+description=Capture a sequence of map canvas frames and export them as an animated GIF.
+version=0.1.0
+author=Siddharth Gupta
+email=siddharthgupta7may@gmail.com
+
+about=Quick Map GIF lets you manually capture a sequence of map canvas frames (with an extent-lock helper that detects and lets you correct accidental pan/zoom drift between captures) and assemble them into an animated GIF with configurable frame rate, loop count, scale, and ping-pong playback. No external dependencies (Pillow/ffmpeg) required — GIF encoding is fully self-contained.
+
+tracker=https://github.com/Siddh75/quick_map_gif/issues
+repository=https://github.com/Siddh75/quick_map_gif
+hasProcessingProvider=no
+tags=animation,gif,export,temporal,map,timelapse
+category=Plugins
+icon=icon.png
+experimental=True
+deprecated=False
+server=False
